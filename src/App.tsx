@@ -1,9 +1,15 @@
-
+import Header from "./containers/Header";
+import GlobalStyle, { Wrapper } from "./styles";
 
 function App() {
 
   return (
-    <h1>My Good Chef</h1>
+    <>
+      <GlobalStyle />
+      <Wrapper>
+        <Header />
+      </Wrapper>
+    </>
   )
 }
 
