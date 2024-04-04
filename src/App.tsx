@@ -1,3 +1,4 @@
+import Footer from "./containers/Footer";
 import Header from "./containers/Header";
 import Shops from "./containers/Shops";
 import GlobalStyle, { Wrapper } from "./styles";
@@ -10,6 +11,7 @@ function App() {
       <Wrapper>
         <Header />
         <Shops />
+        <Footer />
       </Wrapper>
     </>
   )
