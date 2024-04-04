@@ -7,7 +7,13 @@ const ShopCard = () => {
     return (
         <S.CardContainer>
             <S.Image style={{ backgroundImage: `url(${shopIgm})` }}>
-                <button>Best seller</button>
+                <div className='mainTagContainer'>
+                    <button className='mainTag'>Best seller</button>
+                </div>
+                <div className='mealsTagContainer'>
+                    <button className='mealTag'>Desserts</button>
+                    <button className='mealTag'>Snacks</button>
+                </div>
             </S.Image>
             <S.CardContent>
                 <S.Title>Tasty</S.Title>

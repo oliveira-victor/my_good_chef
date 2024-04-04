@@ -21,18 +21,37 @@ export const Image = styled.div`
     background-size: cover;
     border-radius: 10px 10px 0 0;
     padding: 10px;
-    text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     button {
-        padding: 8px;
-        background-color: ${colors.cardTag};
-        color: #fff;
-        font-family: "Comfortaa", sans-serif;
-        text-transform: uppercase;
-        font-weight: bold;
         border: none;
         border-radius: 8px;
         cursor: pointer;
+        padding: 8px;
+        font-family: "Comfortaa", sans-serif;
+    }
+
+    .mainTagContainer {
+        text-align: right;
+
+        .mainTag {
+            background-color: ${colors.cardTag};
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+    }
+
+    .mealsTagContainer {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+
+        .mealTag {
+            background-color: rgba(255, 255, 255, 0.6);
+        }
     }
 `
 
