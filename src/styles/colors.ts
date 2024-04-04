@@ -1,4 +1,5 @@
 export const colors = {
     main: "#dfc994",
-    neutral: "#fff"
+    neutral: "#fff",
+    cardTag: "green"
 }

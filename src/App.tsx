@@ -1,4 +1,5 @@
 import Header from "./containers/Header";
+import Shops from "./containers/Shops";
 import GlobalStyle, { Wrapper } from "./styles";
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
       <GlobalStyle />
       <Wrapper>
         <Header />
+        <Shops />
       </Wrapper>
     </>
   )
