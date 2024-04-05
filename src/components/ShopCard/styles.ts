@@ -50,7 +50,7 @@ export const Image = styled.div`
         flex-wrap: wrap;
 
         .mealTag {
-            background-color: rgba(255, 255, 255, 0.6);
+            background-color: rgba(255, 255, 255, 0.7);
         }
     }
 `
@@ -66,7 +66,7 @@ export const Title = styled.h2`
     font-family: "Rowdies", sans-serif;
     text-align: center;
     margin-bottom: 10px;
-    font-size: 36px;
+    font-size: 30px;
     background: -webkit-linear-gradient(#fff282, #f0c617);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;

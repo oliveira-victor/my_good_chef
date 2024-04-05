@@ -1,28 +1,37 @@
 import * as S from './styles'
 
-import shopIgm from '../../assets/images/place-tasty.jpg'
 import star from '../../assets/images/star.svg'
 
-const ShopCard = () => {
+type Props = {
+    title: string
+    image: string
+    tag: boolean
+    meals: string[]
+    description: string
+    rating: number
+}
+
+const ShopCard = ({ title, image, tag, meals, description, rating }: Props) => {
     return (
         <S.CardContainer>
-            <S.Image style={{ backgroundImage: `url(${shopIgm})` }}>
+            <S.Image style={{ backgroundImage: `url(${image})` }}>
                 <div className='mainTagContainer'>
-                    <button className='mainTag'>Best seller</button>
+                    {tag && <button className='mainTag'>Best seller</button>}
                 </div>
                 <div className='mealsTagContainer'>
-                    <button className='mealTag'>Desserts</button>
-                    <button className='mealTag'>Snacks</button>
+                    {meals.map((item) => (
+                        <button key={item} className='mealTag'>{item}</button>
+                    ))}
                 </div>
             </S.Image>
             <S.CardContent>
-                <S.Title>Tasty</S.Title>
+                <S.Title>{title}</S.Title>
                 <S.Description>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, repellendus ea recusandae temporibus quo aspernatur porro deleniti tempora placeat in a asperiores molestiae optio quia quisquam atque cum labore? Maxime!
+                        {description.length > 274 ? (description.slice(0, 274) + '...') : (description)}
                     </p>
                     <S.Rating>
-                        <span>4.8</span>
+                        <span>{rating}</span>
                         <img src={star} alt="Star icon" />
                     </S.Rating>
                 </S.Description>

@@ -39,5 +39,7 @@ export const Tray = styled.div`
         right: 0;
         transform: translate(-10px, 16px);
         text-align: center;
+        font-size: 12px;
+        padding: 4px;
     }
 `
