@@ -2,33 +2,27 @@ import * as S from './styles'
 
 import star from '../../assets/images/star.svg'
 
-type Props = {
-    title: string
-    image: string
-    tag: boolean
-    meals: string[]
-    description: string
-    rating: number
-}
+const ShopCard = ({ id, title, image, tag, meals, description, rating }: ShopCard) => {
 
-const ShopCard = ({ title, image, tag, meals, description, rating }: Props) => {
     return (
-        <S.CardContainer>
+        <S.CardContainer onClick={() => alert(`Go to shop ${id}: ${title}`)}>
             <S.Image style={{ backgroundImage: `url(${image})` }}>
                 <div className='mainTagContainer'>
                     {tag && <button className='mainTag'>Best seller</button>}
                 </div>
-                <div className='mealsTagContainer'>
+                <ul className='mealsTagContainer'>
                     {meals.map((item) => (
-                        <button key={item} className='mealTag'>{item}</button>
+                        <li key={item}>
+                            <button className='mealTag'>{item}</button>
+                        </li>
                     ))}
-                </div>
+                </ul>
             </S.Image>
             <S.CardContent>
                 <S.Title>{title}</S.Title>
                 <S.Description>
                     <p>
-                        {description.length > 274 ? (description.slice(0, 274) + '...') : (description)}
+                        {description.length > 274 ? description.slice(0, 274) + '... read more' : description}
                     </p>
                     <S.Rating>
                         <span>{rating}</span>

@@ -1,5 +1,7 @@
 import img1 from './assets/images/place-tasty.jpg'
 import img2 from './assets/images/place-bistro.jpg'
+import img3 from './assets/images/place-beach.jpeg'
+import img4 from './assets/images/place-foodtruck.jpeg'
 
 export const data = [
     {
@@ -22,19 +24,19 @@ export const data = [
     },
     {
         id: 3,
-        title: "The Food Factory",
-        image: img1,
-        tag: false,
-        meals: ["Desserts", "Dinner"],
+        title: "Mermaid's",
+        image: img3,
+        tag: true,
+        meals: ["Lunch", "Dinner", "Desserts"],
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, repellendus ea recusandae temporibus quo aspernatur porro deleniti tempora placeat in a asperiores molestiae optio quia quisquam atque cum labore? Maxime!",
         rating: 4.4
     },
     {
         id: 4,
-        title: "Special Kitchen",
-        image: img2,
-        tag: true,
-        meals: ["Lunch", "Desserts"],
+        title: "Hungry Dude",
+        image: img4,
+        tag: false,
+        meals: ["Snacks"],
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, repellendus ea recusandae temporibus quo aspernatur porro deleniti tempora placeat in a asperiores molestiae optio quia quisquam atque cum labore? Maxime!",
         rating: 4.3
     },
@@ -49,8 +51,8 @@ export const data = [
     },
     {
         id: 6,
-        title: "Great Food",
-        image: img2,
+        title: "The Food Factory",
+        image: img3,
         tag: false,
         meals: ["Dinner", "Desserts"],
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, repellendus ea recusandae temporibus quo aspernatur porro deleniti tempora placeat in a asperiores molestiae optio quia quisquam atque cum labore? Maxime! asperiores molestiae optio quia quisquam atque cum labore?",

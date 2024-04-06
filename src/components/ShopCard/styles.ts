@@ -48,6 +48,7 @@ export const Image = styled.div`
         display: flex;
         gap: 6px;
         flex-wrap: wrap;
+        list-style: none;
 
         .mealTag {
             background-color: rgba(255, 255, 255, 0.7);
@@ -80,7 +81,7 @@ export const Description = styled.div`
 
     p {
         font-size: 14px;
-        line-height: 1.4;
+        line-height: 1.46;
     }
 `
 
