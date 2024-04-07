@@ -1,8 +1,6 @@
 import styled, { createGlobalStyle } from "styled-components";
 import { colors } from "./colors";
 
-import bg from '../assets/images/bg.svg'
-
 const GlobalStyle = createGlobalStyle`
     * {
         margin: 0;
@@ -12,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
 
     body {
         background-color: ${colors.main};
-        background-image: url(${bg});
+        background-image: url('https://raw.githubusercontent.com/oliveira-victor/my_good_chef/main/src/assets/images/bg.svg');
         min-height: 100vh;
         font-family: "Comfortaa", sans-serif;
     }
