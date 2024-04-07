@@ -31,7 +31,7 @@ const Shops = () => {
                             vegan={shop.vegan}
                             meals={shop.meals}
                             description={shop.description}
-                            rating={shop.rating}
+                            reviews={shop.reviews}
                         />
                     </li>
                 ))}

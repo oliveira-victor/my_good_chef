@@ -3,7 +3,6 @@ declare type Menu = {
     title: string
     image: string
     type: string
-    rating: number
     mealInfo: string
     price: number
     previousPrice?: number
@@ -25,7 +24,7 @@ declare type ShopCard = {
     vegan: boolean
     meals: string[]
     description: string
-    rating: number
+    reviews: Reviews[]
 }
 
 declare type Shops = {
@@ -36,8 +35,6 @@ declare type Shops = {
     vegan: boolean
     meals: string[]
     description: string
-    rating: number
-    totalReviews: number
     menu: Menu[]
     reviews: Reviews[]
 }
