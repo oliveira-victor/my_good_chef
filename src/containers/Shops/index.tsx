@@ -27,6 +27,7 @@ const Shops = () => {
                             title={shop.title}
                             image={shop.image}
                             tag={shop.tag}
+                            vegan={shop.vegan}
                             meals={shop.meals}
                             description={shop.description}
                             rating={shop.rating}

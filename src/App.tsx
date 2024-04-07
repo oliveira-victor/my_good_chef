@@ -1,19 +1,20 @@
+import { BrowserRouter } from "react-router-dom";
 import Footer from "./containers/Footer";
 import Header from "./containers/Header";
-import Shops from "./containers/Shops";
 import GlobalStyle, { Wrapper } from "./styles";
+import Pages from "./routes";
 
 function App() {
 
   return (
-    <>
+    <BrowserRouter>
       <GlobalStyle />
       <Wrapper>
         <Header />
-        <Shops />
+        <Pages />
         <Footer />
       </Wrapper>
-    </>
+    </BrowserRouter>
   )
 }
 

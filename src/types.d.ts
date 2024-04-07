@@ -22,6 +22,7 @@ declare type ShopCard = {
     title: string
     image: string
     tag: boolean
+    vegan: boolean
     meals: string[]
     description: string
     rating: number
@@ -32,6 +33,7 @@ declare type Shops = {
     title: string
     image: string
     tag: boolean
+    vegan: boolean
     meals: string[]
     description: string
     rating: number

@@ -4,11 +4,14 @@ import { colors } from "../../styles/colors";
 export const Header = styled.header`
     background-color: ${colors.neutral};
     width: 100%;
-    height: 120px;
-    padding: 0 30px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+
+    .headerContainer {
+        height: 120px;
+        padding: 0 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 
     .logo {
         height: 90px;

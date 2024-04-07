@@ -36,11 +36,22 @@ export const Image = styled.div`
     .mainTagContainer {
         text-align: right;
 
+        img {
+            width: 10px;
+            margin-right: 4px;
+        }
+
+        .vegan {
+            background-color: #fff;
+            color: green;;
+        }
+
         .mainTag {
             background-color: ${colors.cardTag};
             color: #fff;
             text-transform: uppercase;
             font-weight: bold;
+            margin-left: 6px;
         }
     }
 
