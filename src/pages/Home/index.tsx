@@ -1,12 +1,14 @@
 import NavBar from "../../components/NavBar"
 import Shops from "../../containers/Shops"
 
+import { Section } from "./styles"
+
 const Home = () => {
     return (
-        <section>
+        <Section>
             <NavBar />
             <Shops />
-        </section>
+        </Section>
     )
 }
 
