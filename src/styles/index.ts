@@ -19,6 +19,18 @@ const GlobalStyle = createGlobalStyle`
         max-width: 1440px;
         width: 100%;
         margin: 0 auto;
+        padding: 0 10px;
+    }
+
+    .loader {
+        padding: 50px 0;
+    }
+
+    .shopTitle {
+        font-family: "Rowdies", sans-serif;
+        background: -webkit-linear-gradient(#fff282, #f0c617);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 `
 

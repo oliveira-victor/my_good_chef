@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+
 import ShopCard from "../../components/ShopCard"
 
 import * as S from './styles'
@@ -14,7 +15,7 @@ const Shops = () => {
     }, [])
 
     if (!shopsData) {
-        return <h2>Loading...</h2>
+        return <div className="loader container"><h2>Loading...</h2></div>
     }
 
     return (

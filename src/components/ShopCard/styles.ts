@@ -75,13 +75,9 @@ export const CardContent = styled.div`
 `
 
 export const Title = styled.h2`
-    font-family: "Rowdies", sans-serif;
     text-align: center;
     margin-bottom: 10px;
     font-size: 30px;
-    background: -webkit-linear-gradient(#fff282, #f0c617);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
 `
 
 export const Description = styled.div`

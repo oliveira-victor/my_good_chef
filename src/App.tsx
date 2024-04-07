@@ -3,6 +3,7 @@ import Footer from "./containers/Footer";
 import Header from "./containers/Header";
 import GlobalStyle, { Wrapper } from "./styles";
 import Pages from "./routes";
+import ShopPage from "./pages/ShopPage";
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
       <Wrapper>
         <Header />
         <Pages />
+        {/* <ShopPage /> */}
         <Footer />
       </Wrapper>
     </BrowserRouter>

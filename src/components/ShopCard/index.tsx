@@ -21,7 +21,7 @@ const ShopCard = ({ id, title, image, tag, vegan, meals, description, rating }: 
                 </ul>
             </S.Image>
             <S.CardContent>
-                <S.Title>{title}</S.Title>
+                <S.Title className='shopTitle'>{title}</S.Title>
                 <S.Description>
                     <p>
                         {description.length > 274 ? description.slice(0, 274) + '... read more' : description}
