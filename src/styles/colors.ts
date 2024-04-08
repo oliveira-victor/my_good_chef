@@ -3,5 +3,6 @@ export const colors = {
     neutral: "#fff",
     cardTag: "green",
     pills: "#bfbfbf",
-    pillsHover: "#9e9e9e"
+    pillsHover: "#9e9e9e",
+    star: "#ffdd54"
 }

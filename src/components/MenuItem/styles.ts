@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { colors } from "../../styles/colors";
 
-export const MenuItem = styled.li`
+export const MenuItem = styled.div`
     width: 300px;
     padding: 10px;
     border: 1px solid ${colors.pills};
@@ -11,7 +11,6 @@ export const MenuItem = styled.li`
 
     &:hover {
         box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
-        transform: translateY(-2px);
     }
 
     img {

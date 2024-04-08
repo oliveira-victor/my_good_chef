@@ -32,6 +32,13 @@ const GlobalStyle = createGlobalStyle`
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
+
+    .fadeIn { animation: fadeIn .3s; }
+
+    @keyframes fadeIn {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
 `
 
 export const Wrapper = styled.div`
