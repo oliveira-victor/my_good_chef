@@ -3,10 +3,11 @@ import { useEffect, useState } from "react"
 import ShopCard from "../../components/ShopCard"
 
 import * as S from './styles'
+import { StyledLink } from "../../styles"
 
 const Shops = () => {
 
-    const [shopsData, setShopsData] = useState<ShopCard[]>()
+    const [shopsData, setShopsData] = useState<ShopCard[]>([])
 
     useEffect(() => {
         fetch('https://api-fake-vfo.vercel.app/api/mygoodchef/shops')
@@ -23,16 +24,18 @@ const Shops = () => {
             <S.ShopsList>
                 {shopsData.map((shop) => (
                     <li key={shop.id}>
-                        <ShopCard
-                            id={shop.id}
-                            title={shop.title}
-                            image={shop.image}
-                            tag={shop.tag}
-                            vegan={shop.vegan}
-                            meals={shop.meals}
-                            description={shop.description}
-                            reviews={shop.reviews}
-                        />
+                        <StyledLink to={`/shop/${shop.id}`}>
+                            <ShopCard
+                                id={shop.id}
+                                title={shop.title}
+                                image={shop.image}
+                                tag={shop.tag}
+                                vegan={shop.vegan}
+                                meals={shop.meals}
+                                description={shop.description}
+                                reviews={shop.reviews}
+                            />
+                        </StyledLink>
                     </li>
                 ))}
             </S.ShopsList>

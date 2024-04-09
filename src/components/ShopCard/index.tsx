@@ -15,7 +15,7 @@ const ShopCard = ({ id, title, image, tag, vegan, meals, description, reviews }:
     }
 
     return (
-        <S.CardContainer onClick={() => alert(`Go to shop ${id}: ${title}`)}>
+        <S.CardContainer>
             <S.Image style={{ backgroundImage: `url(${image})` }}>
                 <div className='mainTagContainer'>
                     {vegan && <button className='vegan'><img src={leaf} alt="Leaf icon" /> Vegan</button>}

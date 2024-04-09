@@ -38,7 +38,7 @@ export const Overlay = styled.div`
 export const Modal = styled.div`
     z-index: 5;
     background-color: ${colors.neutral};
-    max-width: 860px;
+    max-width: 1024px;
     width: 100%;
     margin: 0 10px;
     padding: 30px;
@@ -57,10 +57,11 @@ export const Modal = styled.div`
     }
 
     .foodPic {
-        width: 360px;
+        max-width: 360px;
     }
 
     .modalContent {
+        width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: space-between;

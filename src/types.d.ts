@@ -1,3 +1,7 @@
+declare type MenuInfo = {
+    menu: Menu[]
+}
+
 declare type Menu = {
     id: number
     title: string
@@ -6,6 +10,7 @@ declare type Menu = {
     mealInfo: string
     price: number
     previousPrice?: number
+    rating: number
 }
 
 declare type Reviews = {
@@ -25,6 +30,13 @@ declare type ShopCard = {
     meals: string[]
     description: string
     reviews: Reviews[]
+}
+
+declare type ShopHeader = {
+    title: string
+    reviews: Reviews[]
+    image: string
+    description: string
 }
 
 declare type Shops = {

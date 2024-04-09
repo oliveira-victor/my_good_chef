@@ -2,25 +2,36 @@ import * as S from './styles'
 
 import star from '../../assets/images/star.svg'
 
-import user1 from '../../assets/images/user01.webp'
+type Props = {
+    id: number
+    name: string
+    photo: string
+    stars: number
+    comment: string
+}
 
-const ReviewBox = () => {
+const ReviewBox = ({ id, name, photo, comment, stars }: Props) => {
+
+    const starsGiven = []
+
+    for (let i = 0; i < stars; i++) {
+        starsGiven.push(<img src={star} alt="Star icon" />)
+    }
+
     return (
-        <S.ReviewBox>
-            <img className='userImg' src={user1} alt="User image" />
+        <S.ReviewBox key={id}>
+            <img className='userImg' src={photo} alt="User image" />
             <div>
                 <div className='reviewBoxTitle'>
-                    <h3>James</h3>
+                    <h3>{name}</h3>
                     <div className="starsContainer">
-                        <img src={star} alt="Star icon" />
-                        <img src={star} alt="Star icon" />
-                        <img src={star} alt="Star icon" />
-                        <img src={star} alt="Star icon" />
-                        <img src={star} alt="Star icon" />
+                        {starsGiven.map((star, index) => (
+                            <span key={index}>{star}</span>
+                        ))}
                     </div>
                 </div>
                 <p>
-                    Excellent place! I recommend it.
+                    {comment}
                 </p>
             </div>
         </S.ReviewBox>

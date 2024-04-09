@@ -6,11 +6,11 @@ import * as S from './styles'
 
 import close from '../../assets/images/close.svg'
 
-const ShopMenu = () => {
+const ShopMenu = ({ menu }: MenuInfo) => {
 
     const [modalIsOpen, setModalIsOpen] = useState(false)
 
-    const [shopsData, setShopsData] = useState<ShopCard[]>()
+    /* const [shopsData, setShopsData] = useState<ShopCard[]>()
 
     useEffect(() => {
         fetch('https://api-fake-vfo.vercel.app/api/mygoodchef/shops')
@@ -20,7 +20,7 @@ const ShopMenu = () => {
 
     if (!shopsData) {
         return <div className="loader container"><h2>Loading...</h2></div>
-    }
+    } */
 
     return (
         <S.MenuContainer>
@@ -34,10 +34,10 @@ const ShopMenu = () => {
                             <div className="text">
                                 <img onClick={() => setModalIsOpen(false)} className='close' src={close} alt="Close icon" />
                                 <h4>
-                                    Dish
+                                    Title
                                 </h4>
                                 <p>
-                                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloribus nobis dolorum voluptas eum, eius cumque consequatur culpa nihil corporis odit excepturi at alias cupiditate voluptatibus animi rerum quas laudantium! Iste.
+                                    Description
                                 </p>
                             </div>
                             <div className="purchaseContainer">

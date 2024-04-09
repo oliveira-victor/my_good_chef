@@ -1,5 +1,6 @@
 import styled, { createGlobalStyle } from "styled-components";
 import { colors } from "./colors";
+import { Link } from "react-router-dom";
 
 const GlobalStyle = createGlobalStyle`
     * {
@@ -45,6 +46,11 @@ export const Wrapper = styled.div`
     max-width: 1920px;
     width: 100%;
     margin: 0 auto;
+`
+
+export const StyledLink = styled(Link)`
+    text-decoration: none;
+    color: inherit;
 `
 
 export default GlobalStyle
