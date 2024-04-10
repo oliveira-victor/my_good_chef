@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { colors } from "../../styles/colors";
+import { screenSize } from "../../styles/screenSize";
 
 export const MenuItem = styled.div`
     width: 300px;
@@ -19,18 +20,49 @@ export const MenuItem = styled.div`
     }
 
     h4 {
-        font-size: 22px;
+        font-size: 18px;
     }
 
     .dishTitle {
-        display: flex;
-        justify-content: space-between;
+        /* display: flex;
+        justify-content: space-between; */
+        display: grid;
+        grid-template-columns: auto 60px;
         padding-top: 10px;
+        align-items: center;
 
-        .previousPrice {
-            margin-right: 10px;
-            color: ${colors.pills};
-            text-decoration: line-through;
+        .price {
+            display: flex;
+            flex-direction: column;
+
+            .previousPrice {
+                margin-right: 10px;
+                color: ${colors.pills};
+                text-decoration: line-through;
+            }
+        }
+    }
+
+    @media (max-width: ${screenSize.phone}) {
+        width: 140px;
+
+            .dishTitle {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 6px;
+
+                h4 {
+                    font-size: 12px;
+                }
+
+            .price {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                font-size: 12px;
+            }
         }
     }
 `

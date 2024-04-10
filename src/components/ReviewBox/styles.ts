@@ -8,8 +8,8 @@ export const ReviewBox = styled.li`
     padding: 10px;
     border: 1px solid ${colors.pills};
     border-radius: 10px;
+    min-width: 300px;
     max-width: 300px;
-    width: 100%;
     height: 96px;
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
 

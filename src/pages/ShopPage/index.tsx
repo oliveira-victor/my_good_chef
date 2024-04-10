@@ -23,7 +23,7 @@ const ShopPage = () => {
     }
 
     return (
-        <S.ShopSection className="container">
+        <S.ShopSection>
             <ShopHeader 
                 title={shop.title}
                 reviews={shop.reviews}

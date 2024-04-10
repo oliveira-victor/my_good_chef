@@ -3,7 +3,7 @@ import * as S from './styles'
 import star from '../../assets/images/star.svg'
 import leaf from '../../assets/images/leaf.svg'
 
-const ShopCard = ({ id, title, image, tag, vegan, meals, description, reviews }: ShopCard) => {
+const ShopCard = ({ title, image, tag, vegan, meals, description, reviews }: ShopCard) => {
 
     const getRating = (data: Reviews[]) => {
         let totalStars = 0

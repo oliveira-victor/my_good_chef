@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Shops = styled.section`
-    padding: 40px;
+    margin: 40px auto;
 `
 
 export const ShopsList = styled.ul`

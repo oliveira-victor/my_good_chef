@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import MenuItem from '../../components/MenuItem'
 
@@ -9,18 +9,6 @@ import close from '../../assets/images/close.svg'
 const ShopMenu = ({ menu }: MenuInfo) => {
 
     const [modalIsOpen, setModalIsOpen] = useState(false)
-
-    /* const [shopsData, setShopsData] = useState<ShopCard[]>()
-
-    useEffect(() => {
-        fetch('https://api-fake-vfo.vercel.app/api/mygoodchef/shops')
-            .then((res) => res.json())
-            .then((res) => setShopsData(res))
-    }, [])
-
-    if (!shopsData) {
-        return <div className="loader container"><h2>Loading...</h2></div>
-    } */
 
     return (
         <S.MenuContainer>
@@ -34,10 +22,10 @@ const ShopMenu = ({ menu }: MenuInfo) => {
                             <div className="text">
                                 <img onClick={() => setModalIsOpen(false)} className='close' src={close} alt="Close icon" />
                                 <h4>
-                                    Title
+                                    Pasta Carbonara with Shrimps
                                 </h4>
                                 <p>
-                                    Description
+                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum voluptatum nihil itaque impedit, hic quaerat dolorem asperiores at sequi totam quis quod expedita, ad, dolores corrupti a nemo suscipit. Veritatis.
                                 </p>
                             </div>
                             <div className="purchaseContainer">
@@ -58,9 +46,11 @@ const ShopMenu = ({ menu }: MenuInfo) => {
 
             <h3 className="shopTitle">Menu</h3>
             <S.MenuList>
-                <li onClick={() => setModalIsOpen(true)}>
-                    <MenuItem />
-                </li>
+                {menu.map((item) => (
+                    <li key={item.id} onClick={() => setModalIsOpen(true)}>
+                        <MenuItem />
+                    </li>
+                ))}
             </S.MenuList>
         </S.MenuContainer>
     )

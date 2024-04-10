@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { colors } from "../../styles/colors";
+import { screenSize } from "../../styles/screenSize";
 
 export const MenuContainer = styled.section`
 
@@ -15,6 +16,10 @@ export const MenuList = styled.ul`
     flex-wrap: wrap;
     justify-content: space-around;
     gap: 30px;
+
+    @media (max-width: ${screenSize.phone}) {
+        gap:10px
+    }
 `
 
 export const FullScreen = styled.div`
@@ -40,12 +45,17 @@ export const Modal = styled.div`
     background-color: ${colors.neutral};
     max-width: 1024px;
     width: 100%;
+    max-height: 90vh;
     margin: 0 10px;
     padding: 30px;
     border-radius: 20px;
     display: flex;
     gap: 20px;
     position: relative;
+
+    @media (max-width: ${screenSize.phone}) {
+        flex-direction: column;
+    }
 
     .close {
         width: 20px;
@@ -54,10 +64,23 @@ export const Modal = styled.div`
         right: 0;
         transform: translate(-20px, 20px);
         cursor: pointer;
+
+        @media (max-width: ${screenSize.phone}) {
+            background-color: #fff;
+            width: 40px;
+            padding: 6px;
+            border-radius: 50%;
+            transform: translate(-10px, 10px);
+        }
     }
 
     .foodPic {
         max-width: 360px;
+        
+        @media (max-width: ${screenSize.phone}) {
+            margin:  0 auto;
+            max-width: 80vw;
+        }
     }
 
     .modalContent {
@@ -65,6 +88,7 @@ export const Modal = styled.div`
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        gap: 20px;
 
         h4 {
             font-size: 30px;
@@ -73,6 +97,17 @@ export const Modal = styled.div`
 
         p {
             line-height: 1.5;
+        }
+
+        @media (max-width: ${screenSize.phone}) {
+            h4 {
+                font-size: 20px;
+                text-align: center;
+            }
+
+            p {
+                font-size: 14px;
+            }
         }
     }
 

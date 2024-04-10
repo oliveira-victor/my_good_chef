@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { colors } from "../../styles/colors";
+import { screenSize } from "../../styles/screenSize";
 
 export const TopContainer = styled.div`
     display: flex;
@@ -28,6 +29,12 @@ export const BottomContainer = styled.div`
     gap: 32px;
     margin-top: 10px;
 
+    @media (max-width: ${screenSize.phone}) {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
     .imgContainer {
         padding: 10px;
         border: 1px solid ${colors.pills};
@@ -51,6 +58,12 @@ export const Description = styled.div`
         font-size: 18px;
         line-height: 1.4;
     }
+
+    @media (max-width: ${screenSize.phone}) {
+        p {
+            font-size: 14px;
+        }
+    }
 `
 
 export const Reviews = styled.div`
@@ -60,6 +73,11 @@ export const Reviews = styled.div`
         flex-wrap: wrap;
         gap: 10px;
         margin-top: 10px;
+
+        @media (max-width: ${screenSize.phone}) {
+            flex-wrap: nowrap;
+            overflow-x: auto;
+        }
     }
 
     .moreReviews {
