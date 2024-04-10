@@ -55,6 +55,8 @@ export const Modal = styled.div`
 
     @media (max-width: ${screenSize.phone}) {
         flex-direction: column;
+        overflow-y: auto;
+        height: fit-content;
     }
 
     .close {
@@ -74,12 +76,20 @@ export const Modal = styled.div`
         }
     }
 
-    .foodPic {
+    .imageContainer {
         max-width: 360px;
-        
+        width: 100%;
+        height: 360px;
+        background-size: cover;
+        background-position: center;
+
+        .foodPic {
+            width: 100%;
+        }
         @media (max-width: ${screenSize.phone}) {
             margin:  0 auto;
             max-width: 80vw;
+            height: 120px;
         }
     }
 
@@ -100,6 +110,8 @@ export const Modal = styled.div`
         }
 
         @media (max-width: ${screenSize.phone}) {
+            height: 100%;
+
             h4 {
                 font-size: 20px;
                 text-align: center;

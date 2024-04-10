@@ -17,7 +17,7 @@ const ShopMenu = ({ menu }: MenuInfo) => {
                 <S.FullScreen className='fadeIn'>
                     <S.Overlay onClick={() => setModalIsOpen(false)}></S.Overlay>
                     <S.Modal>
-                        <img className='foodPic' src="https://th.bing.com/th/id/OIG4.UrH7CaUXHf23hsyG538x?w=1024&h=1024&rs=1&pid=ImgDetMain" alt="Food picture" />
+                        <div className="imageContainer" style={{backgroundImage: `url(https://th.bing.com/th/id/OIG4.UrH7CaUXHf23hsyG538x?w=1024&h=1024&rs=1&pid=ImgDetMain)`}}></div>
                         <div className="modalContent">
                             <div className="text">
                                 <img onClick={() => setModalIsOpen(false)} className='close' src={close} alt="Close icon" />
