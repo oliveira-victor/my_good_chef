@@ -2,21 +2,23 @@ declare type MenuInfo = {
     menu: Menu[]
 }
 
-declare type Menu = {
-    id: number
+declare type MenuItem = {
     title: string
     image: string
-    type: string
     mealInfo: string
     price: number
     previousPrice?: number
-    rating: number
+}
+
+declare type Menu = {
+    type: string
+    list: MenuItem[]
 }
 
 declare type Reviews = {
     id: number
     name: string
-    photo: string
+    photo?: string
     stars: number
     comment: string
 }
