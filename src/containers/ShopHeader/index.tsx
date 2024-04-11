@@ -18,9 +18,9 @@ const InsideShop = ({ title, reviews, image, description }: ShopHeader) => {
         let latestReviews = data.slice(-3)
         let lastThreeReviews = null
 
-        lastThreeReviews = latestReviews.map((user) => (
-            <ReviewBox key={user.id}
-                    id={user.id}
+        lastThreeReviews = latestReviews.map((user, index) => (
+            <ReviewBox key={index}
+                    id={index}
                     name={user.name}
                     photo={user.photo}
                     comment={user.comment}

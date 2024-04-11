@@ -1,6 +1,7 @@
 import * as S from './styles'
 
 import star from '../../assets/images/star.svg'
+import user from '../../assets/images/user.svg'
 
 type Props = {
     id: number
@@ -20,7 +21,7 @@ const ReviewBox = ({ id, name, photo, comment, stars }: Props) => {
 
     return (
         <S.ReviewBox key={id}>
-            <img className='userImg' src={photo} alt="User image" />
+            <img className='userImg' src={photo? photo : user} alt="User image" />
             <div>
                 <div className='reviewBoxTitle'>
                     <h3>{name}</h3>
@@ -31,7 +32,7 @@ const ReviewBox = ({ id, name, photo, comment, stars }: Props) => {
                     </div>
                 </div>
                 <p>
-                    {comment}
+                    {comment.length > 90 ? comment.slice(0, 90) + "..." : comment}
                 </p>
             </div>
         </S.ReviewBox>

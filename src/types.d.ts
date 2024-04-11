@@ -16,7 +16,6 @@ declare type Menu = {
 }
 
 declare type Reviews = {
-    id: number
     name: string
     photo?: string
     stars: number
