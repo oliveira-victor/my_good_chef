@@ -5,7 +5,7 @@ import star from '../../assets/images/star.svg'
 type Props = {
     id: number
     name: string
-    photo: string
+    photo?: string
     stars: number
     comment: string
 }
