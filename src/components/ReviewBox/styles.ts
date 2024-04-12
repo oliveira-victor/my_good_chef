@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { colors } from "../../styles/colors";
+import { screenSize } from "../../styles/screenSize";
 
 export const ReviewBox = styled.li`
     display: grid;
@@ -35,5 +36,9 @@ export const ReviewBox = styled.li`
 
     p {
         font-size: 12px;
+
+        @media (max-width: ${screenSize.phone}) {
+            font-size: 12px;
+        }
     }
 `
