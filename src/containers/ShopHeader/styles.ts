@@ -72,6 +72,7 @@ export const Reviews = styled.div`
         flex-wrap: wrap;
         gap: 10px;
         margin-top: 10px;
+        padding: 6px;
 
         @media (max-width: ${screenSize.phone}) {
             flex-wrap: nowrap;

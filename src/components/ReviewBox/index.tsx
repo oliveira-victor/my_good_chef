@@ -31,7 +31,7 @@ const ReviewBox = ({ id, name, photo, comment, stars }: Props) => {
                         ))}
                     </div>
                 </div>
-                <p>
+                <p className='reviewText'>
                     {comment.length > 90 ? comment.slice(0, 90) + "..." : comment}
                 </p>
             </div>

@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { colors } from "../../styles/colors";
-import { screenSize } from "../../styles/screenSize";
 
 export const ReviewBox = styled.li`
     display: grid;
@@ -11,7 +10,7 @@ export const ReviewBox = styled.li`
     border-radius: 10px;
     min-width: 300px;
     max-width: 300px;
-    height: 96px;
+    min-height: 96px;
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
 
     .reviewBoxTitle {
@@ -34,11 +33,7 @@ export const ReviewBox = styled.li`
         border-radius: 50%;
     }
 
-    p {
+    .reviewText {
         font-size: 12px;
-
-        @media (max-width: ${screenSize.phone}) {
-            font-size: 12px;
-        }
     }
 `

@@ -19,7 +19,7 @@ export const MenuItem = styled.div`
         border-radius: 10px;
     }
 
-    h4 {
+    .menuTitle {
         font-size: 18px;
     }
 
