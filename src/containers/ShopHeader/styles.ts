@@ -106,7 +106,7 @@ export const ReviewModal = styled.div`
         max-height: 60vh;
         overflow-y: auto;
 
-        img {
+        .userPic {
             border-radius: 50%;
             width: 68px;
             height: 68px;
@@ -134,6 +134,14 @@ export const ReviewContent = styled.div`
 
         h4 {
             font-size: 20px;
+        }
+
+        .starsContainer {
+            display: flex;
+
+            .stars {
+                width: 20px;
+            }
         }
 
         @media (max-width: ${screenSize.phone}) {

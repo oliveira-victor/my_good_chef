@@ -12,6 +12,16 @@ const InsideShop = ({ title, reviews, image, description }: ShopHeader) => {
 
     const [modalIsOpen, setModalIsOpen] = useState(false)
 
+    const getStars = (amount: number) => {
+        const starsArr = new Array(amount).fill(undefined)
+
+        const renderedStars = starsArr.map((_, index) => (
+            <img key={index} className='stars' src={star} alt={`Star ${index + 1}`} />
+        ))
+
+        return renderedStars
+    }
+
     const getRating = (data: Reviews[]) => {
         let totalStars = 0
         data.map((item) => (
@@ -49,12 +59,12 @@ const InsideShop = ({ title, reviews, image, description }: ShopHeader) => {
                             {
                                 reviews.map((review, index) => (
                                     <li key={index}>
-                                        <img src={review.photo ? review.photo : user} alt="User picture" />
+                                        <img className='userPic' src={review.photo ? review.photo : user} alt="User picture" />
                                         <S.ReviewContent>
                                             <div className="reviewTItle">
                                                 <h4>{review.name}</h4>
-                                                <div className="stars">
-                                                    {review.stars}
+                                                <div className="starsContainer">
+                                                    {getStars(review.stars)}
                                                 </div>
                                             </div>
                                             <p>
