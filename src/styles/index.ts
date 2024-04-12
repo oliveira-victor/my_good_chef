@@ -1,6 +1,7 @@
 import styled, { createGlobalStyle } from "styled-components";
 import { colors } from "./colors";
 import { Link } from "react-router-dom";
+import { screenSize } from "./screenSize";
 
 const GlobalStyle = createGlobalStyle`
     * {
@@ -33,6 +34,53 @@ const GlobalStyle = createGlobalStyle`
         background: -webkit-linear-gradient(#fff282, #f0c617);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+    }
+
+    .fullscreen {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .overlay {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .modal {
+        z-index: 5;
+        background-color: ${colors.neutral};
+        max-width: 1024px;
+        width: 100%;
+        max-height: 90vh;
+        margin: 0 10px;
+        padding: 30px;
+        border-radius: 20px;
+        position: relative;
+    }
+
+    .close {
+        width: 20px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        transform: translate(-20px, 20px);
+        cursor: pointer;
+
+        @media (max-width: ${screenSize.phone}) {
+            background-color: #fff;
+            width: 40px;
+            padding: 6px;
+            border-radius: 50%;
+            transform: translate(-10px, 10px);
+        }
     }
 
     .fadeIn { animation: fadeIn .3s; }

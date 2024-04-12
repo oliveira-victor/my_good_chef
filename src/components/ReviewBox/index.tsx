@@ -21,7 +21,7 @@ const ReviewBox = ({ id, name, photo, comment, stars }: Props) => {
 
     return (
         <S.ReviewBox key={id}>
-            <img className='userImg' src={photo? photo : user} alt="User image" />
+            <img className='userImg' src={photo ? photo : user} alt="User image" />
             <div>
                 <div className='reviewBoxTitle'>
                     <h3>{name}</h3>

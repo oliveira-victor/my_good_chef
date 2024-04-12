@@ -18,7 +18,6 @@ export const TopContainer = styled.div`
 
     img {
         width: 34px;
-        transform: translateY(4px);
         margin-left: 6px;
     }
 `
@@ -90,6 +89,65 @@ export const Reviews = styled.div`
         &:hover {
             text-decoration: underline;
             background-color: #e6e6e6;
+        }
+    }
+`
+
+export const ReviewModal = styled.div`
+    z-index: 5;
+    max-width: 1000px;
+    width: 96%;
+    background-color: ${colors.neutral};
+
+    ul {
+        list-style: none;
+        margin-top: 20px;
+        max-height: 60vh;
+        overflow-y: auto;
+
+        img {
+            border-radius: 50%;
+            width: 68px;
+            height: 68px;
+            object-fit: cover;
+        }
+
+        li {
+            display: flex;
+            gap: 20px;
+            padding: 16px;
+            border-bottom: 1px solid ${colors.pills};
+        }
+    }
+`
+
+export const ReviewContent = styled.div`
+    width: 100%;
+
+    .reviewTItle {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 10px;
+
+        h4 {
+            font-size: 20px;
+        }
+
+        @media (max-width: ${screenSize.phone}) {
+            flex-direction: column;
+            gap: 4px;
+            
+            h4 {
+                font-size: 16px;
+            }
+        }
+    }
+
+    p {
+        @media (max-width: ${screenSize.phone}) {
+            font-size: 14px;
         }
     }
 `

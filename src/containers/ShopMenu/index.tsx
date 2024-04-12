@@ -32,9 +32,9 @@ const ShopMenu = ({ menu }: MenuInfo) => {
         <S.MenuContainer>
 
             {modalIsOpen && (
-                <S.FullScreen className='fadeIn'>
-                    <S.Overlay onClick={() => setModalIsOpen(false)}></S.Overlay>
-                    <S.Modal>
+                <div className='fullscreen fadeIn'>
+                    <div className='overlay' onClick={() => setModalIsOpen(false)}></div>
+                    <S.Modal className='modal'>
                         <div className="imageContainer" style={{ backgroundImage: `url(${modalData.image})` }}></div>
                         <div className="modalContent">
                             <div className="text">
@@ -59,7 +59,7 @@ const ShopMenu = ({ menu }: MenuInfo) => {
                             </div>
                         </div>
                     </S.Modal>
-                </S.FullScreen>
+                </div>
             )}
 
             <h3 className="shopTitle">Menu</h3>
