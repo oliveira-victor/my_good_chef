@@ -1,3 +1,4 @@
+import { currencyFormat } from '../../utils/currency'
 import * as S from './styles'
 
 type Props = {
@@ -14,8 +15,8 @@ const MenuItem = ({title, image, price, previousPrice}: Props) => {
             <div className="dishTitle">
                 <h4 className='menuTitle'>{title}</h4>
                 <div className="price">
-                    {previousPrice ? <span className='previousPrice'>$ {previousPrice}</span> : <span>&nbsp;</span>}
-                    <span>$ {price}</span>
+                    {previousPrice ? <span className='previousPrice'>{currencyFormat.format(previousPrice)}</span> : <span>&nbsp;</span>}
+                    <span>{currencyFormat.format(price)}</span>
                 </div>
             </div>
         </S.MenuItem>

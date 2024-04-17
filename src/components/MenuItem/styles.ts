@@ -26,8 +26,8 @@ export const MenuItem = styled.div`
     .dishTitle {
         display: grid;
         grid-template-columns: auto 60px;
+        gap: 10px;
         padding-top: 10px;
-        align-items: center;
 
         .price {
             display: flex;

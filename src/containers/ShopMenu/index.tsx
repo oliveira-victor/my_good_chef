@@ -5,6 +5,7 @@ import MenuItem from '../../components/MenuItem'
 import * as S from './styles'
 
 import close from '../../assets/images/close.svg'
+import { currencyFormat } from '../../utils/currency'
 
 const ShopMenu = ({ menu }: MenuInfo) => {
 
@@ -48,8 +49,8 @@ const ShopMenu = ({ menu }: MenuInfo) => {
                             </div>
                             <div className="purchaseContainer">
                                 <div>
-                                    {modalData.previousPrice ? <><span className='oldPrice'>$ {modalData.previousPrice}</span><br /></> : ''}
-                                    <span className='price'>$ {modalData.price}</span>
+                                    {modalData.previousPrice ? <><span className='oldPrice'>{currencyFormat.format(modalData.previousPrice)}</span><br /></> : ''}
+                                    <span className='price'>{currencyFormat.format(modalData.price)}</span>
                                 </div>
                                 <div className="cartControler">
                                     <button>-</button>

@@ -24,14 +24,14 @@ const ShopPage = () => {
 
     return (
         <S.ShopSection>
-            <ShopHeader 
+            <ShopHeader
                 title={shop.title}
                 reviews={shop.reviews}
                 image={shop.image}
                 description={shop.description}
             />
             <hr />
-            <ShopMenu 
+            <ShopMenu
                 menu={shop.menu}
             />
         </S.ShopSection>
