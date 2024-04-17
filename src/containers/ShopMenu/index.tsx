@@ -1,11 +1,13 @@
 import { useState } from 'react'
 
+import { currencyFormat } from '../../utils/currency'
 import MenuItem from '../../components/MenuItem'
 
 import * as S from './styles'
 
 import close from '../../assets/images/close.svg'
-import { currencyFormat } from '../../utils/currency'
+import heartEmpty from '../../assets/images/heart-empty.svg'
+/* import heartFull from '../../assets/images/heart-full.svg' */
 
 const ShopMenu = ({ menu }: MenuInfo) => {
 
@@ -36,7 +38,9 @@ const ShopMenu = ({ menu }: MenuInfo) => {
                 <div className='fullscreen fadeIn'>
                     <div className='overlay' onClick={() => setModalIsOpen(false)}></div>
                     <S.Modal className='modal'>
-                        <div className="imageContainer" style={{ backgroundImage: `url(${modalData.image})` }}></div>
+                        <div className="imageContainer" style={{ backgroundImage: `url(${modalData.image})` }}>
+                            <img className='favorite' src={heartEmpty} alt="Favorite icon" />
+                        </div>
                         <div className="modalContent">
                             <div className="text">
                                 <img onClick={() => setModalIsOpen(false)} className='close' src={close} alt="Close icon" />

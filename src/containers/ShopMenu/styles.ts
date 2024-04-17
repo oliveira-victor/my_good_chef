@@ -58,6 +58,18 @@ export const Modal = styled.div`
         height: 360px;
         background-size: cover;
         background-position: center;
+        text-align: right;
+        padding: 20px;
+
+        @media (max-width: ${screenSize.phone}) {
+            text-align: left;
+            padding: 10px;
+        }
+
+        .favorite {
+            width: 30px;
+            cursor: pointer;
+        }
 
         .foodPic {
             width: 100%;
