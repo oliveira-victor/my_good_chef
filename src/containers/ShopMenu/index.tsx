@@ -1,18 +1,26 @@
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { currencyFormat } from '../../utils/currency'
+import { RootReducer } from '../../store'
+import { add } from '../../store/reducers/favorites'
 import MenuItem from '../../components/MenuItem'
 
 import * as S from './styles'
 
 import close from '../../assets/images/close.svg'
 import heartEmpty from '../../assets/images/heart-empty.svg'
-/* import heartFull from '../../assets/images/heart-full.svg' */
+import heartFull from '../../assets/images/heart-full.svg'
 
 const ShopMenu = ({ menu }: MenuInfo) => {
 
+    const favoritesList = useSelector((state: RootReducer) => state.favorites.favoritesList)
+
+    const dispatch = useDispatch()
+
     const [modalIsOpen, setModalIsOpen] = useState(false)
     const [modalData, setModalData] = useState<MenuItem>({
+        id: 0,
         title: "",
         image: "",
         mealInfo: "",
@@ -22,6 +30,7 @@ const ShopMenu = ({ menu }: MenuInfo) => {
 
     const handleModal = (data: MenuItem) => {
         setModalData({
+            id: data.id,
             title: data.title,
             image: data.image,
             mealInfo: data.mealInfo,
@@ -29,6 +38,14 @@ const ShopMenu = ({ menu }: MenuInfo) => {
             previousPrice: data.previousPrice
         })
         setModalIsOpen(true)
+    }
+
+    const addToFavorites = (data: MenuItem) => {
+        dispatch(add(data))
+    }
+
+    const checkFavorites = (fav: number) => {
+        return favoritesList.some((item) => item.id === fav)
     }
 
     return (
@@ -39,7 +56,7 @@ const ShopMenu = ({ menu }: MenuInfo) => {
                     <div className='overlay' onClick={() => setModalIsOpen(false)}></div>
                     <S.Modal className='modal'>
                         <div className="imageContainer" style={{ backgroundImage: `url(${modalData.image})` }}>
-                            <img className='favorite' src={heartEmpty} alt="Favorite icon" />
+                            <img className='favorite' onClick={() => addToFavorites(modalData)} src={checkFavorites(modalData.id) ? heartFull : heartEmpty} alt="Favorite icon" />
                         </div>
                         <div className="modalContent">
                             <div className="text">

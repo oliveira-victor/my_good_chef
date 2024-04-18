@@ -58,17 +58,28 @@ export const Modal = styled.div`
         height: 360px;
         background-size: cover;
         background-position: center;
-        text-align: right;
         padding: 20px;
+        text-align: end;
 
         @media (max-width: ${screenSize.phone}) {
             text-align: left;
             padding: 10px;
         }
 
+        .favBalloon {
+            background-color: rgba(255, 255, 255, 0.8);
+            height: fit-content;
+            padding: 6px;
+            font-size: 12px;
+            color: #d40000;
+            border-radius: 8px 8px 0 8px;
+            box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
+        }
+
         .favorite {
             width: 30px;
             cursor: pointer;
+            height: fit-content;
         }
 
         .foodPic {

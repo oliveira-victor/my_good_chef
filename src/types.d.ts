@@ -3,6 +3,7 @@ declare type MenuInfo = {
 }
 
 declare type MenuItem = {
+    id: number
     title: string
     image: string
     mealInfo: string
