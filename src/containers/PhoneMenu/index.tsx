@@ -1,11 +1,13 @@
+import { useDispatch, useSelector } from 'react-redux'
+
+import { openFav } from '../../store/reducers/favoritesModal'
+import { RootReducer } from '../../store'
+
 import * as S from './styles'
 
 import home from '../../assets/images/home-icon.svg'
 import cart from '../../assets/images/cart-icon.svg'
 import heart from '../../assets/images/heart-empty.svg'
-import { useDispatch, useSelector } from 'react-redux'
-import { openFav } from '../../store/reducers/favoritesModal'
-import { RootReducer } from '../../store'
 
 const PhoneMenu = () => {
 

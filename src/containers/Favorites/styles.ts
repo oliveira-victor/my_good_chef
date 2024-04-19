@@ -32,7 +32,6 @@ export const Favorites = styled.div`
     @media (max-width: ${screenSize.phone}) {
         height: 100px;
         margin-bottom: 60px;
-        /* transform: translateY(-60px); */
         padding: 10px;
     }
 `
