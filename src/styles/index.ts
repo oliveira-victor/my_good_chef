@@ -45,6 +45,7 @@ const GlobalStyle = createGlobalStyle`
         display: flex;
         justify-content: center;
         align-items: center;
+        z-index: 5;
     }
 
     .overlay {
@@ -55,7 +56,6 @@ const GlobalStyle = createGlobalStyle`
     }
 
     .modal {
-        z-index: 5;
         background-color: ${colors.neutral};
         max-width: 1024px;
         width: 100%;

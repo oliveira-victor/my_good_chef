@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { colors } from "../../styles/colors";
+import { screenSize } from "../../styles/screenSize";
 
 export const Header = styled.header`
     background-color: ${colors.neutral};
@@ -11,6 +12,10 @@ export const Header = styled.header`
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        @media (max-width: ${screenSize.phone}) {
+            justify-content: center;
+        }
     }
 
     .logo {
@@ -18,31 +23,44 @@ export const Header = styled.header`
     }
 `
 
-export const Tray = styled.div`
-    cursor: pointer;
-    width: 80px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
+export const Menu = styled.nav`
 
-    img {
-        width: 100%;
+    ul {
+        list-style: none;
+        display: flex;
+        gap: 32px;
+        align-items: center;
+
+        li {
+            cursor: pointer;
+            position: relative;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .cart {
+        width: 40px;
     }
 
     .bubble {
-        background-color: red;
-        color: #fff;
         width: 20px;
         height: 20px;
-        border-radius: 50%;
+        background-color: red;
+        color: #fff;
         position: absolute;
         top: 0;
         right: 0;
-        transform: translate(-10px, 16px);
-        text-align: center;
-        font-size: 12px;
+        transform: translate(8px, -8px);
         padding: 4px;
+        font-size: 12px;
+        text-align: center;
+        border-radius: 50%;
+    }
+
+    @media (max-width: ${screenSize.phone}) {
+        display: none;
     }
 `

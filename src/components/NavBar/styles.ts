@@ -15,12 +15,14 @@ export const Nav = styled.nav`
 export const NavContainer = styled.div`
     display: flex;
     flex-wrap: nowrap;
+    justify-content: center;
     overflow-x: auto;
     gap: 10px;
     padding: 0 10px;
 
     @media (max-width: ${screenSize.phone}) {
         width: 90vw;
+        justify-content: left;
     }
 
     button {

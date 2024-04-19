@@ -5,7 +5,7 @@ import GlobalStyle, { Wrapper } from "./styles";
 import Pages from "./routes";
 import { Provider } from "react-redux";
 import { store } from "./store";
-/* import ShopPage from "./pages/ShopPage" */;
+import PhoneMenu from "./containers/PhoneMenu";
 
 function App() {
 
@@ -15,8 +15,8 @@ function App() {
         <GlobalStyle />
         <Wrapper>
           <Header />
+          <PhoneMenu />
           <Pages />
-          {/* <ShopPage /> */}
           <Footer />
         </Wrapper>
       </BrowserRouter>

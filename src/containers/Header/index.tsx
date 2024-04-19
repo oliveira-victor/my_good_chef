@@ -1,7 +1,7 @@
 import * as S from './styles'
 
 import logo from '../../assets/images/logo.webp'
-import tray from '../../assets/images/tray.svg'
+import cart from '../../assets/images/cart-icon.svg'
 
 const Header = () => {
     return (
@@ -10,12 +10,22 @@ const Header = () => {
                 <h1>
                     <img className='logo' src={logo} alt="My Good Chef" />
                 </h1>
-                <S.Tray>
-                    <img onClick={() => alert('Open cart')} src={tray} alt="Tray icon" />
-                    <div className="bubble">
-                        3
-                    </div>
-                </S.Tray>
+                <S.Menu>
+                    <ul>
+                        <li>
+                            Stores
+                        </li>
+                        <li>
+                            Favorites
+                        </li>
+                        <li>
+                            <img className='cart' src={cart} alt="Cart icon" />
+                            <div className="bubble">
+                                3
+                            </div>
+                        </li>
+                    </ul>
+                </S.Menu>
             </div>
         </S.Header>
     )

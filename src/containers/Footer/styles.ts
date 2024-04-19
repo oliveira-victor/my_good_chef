@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { colors } from "../../styles/colors";
+import { screenSize } from "../../styles/screenSize";
 
 export const Footer = styled.div`
     background-color: ${colors.neutral};
@@ -14,5 +15,9 @@ export const Footer = styled.div`
 
     p {
         margin-top: 20px;
+    }
+
+    @media (max-width: ${screenSize.phone}) {
+        margin-bottom: 80px;
     }
 `
