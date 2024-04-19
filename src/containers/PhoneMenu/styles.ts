@@ -6,6 +6,16 @@ import { Link } from "react-router-dom";
 export const PhoneMenu = styled.div`
     display: none;
 
+    .listItem {
+        width: 80px;
+        font-size: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        align-items: center;
+        position: relative;
+    }
+
     @media (max-width: ${screenSize.phone}) {
         display: block;
         background-color: ${colors.neutral};
@@ -15,7 +25,7 @@ export const PhoneMenu = styled.div`
         padding: 8px;
         bottom: 0;
         left: 0;
-        z-index: 2;
+        z-index: 5;
         box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.3);
     }
 `
@@ -25,16 +35,6 @@ export const MenuList = styled.nav`
         display: flex;
         justify-content: space-around;
         list-style: none;
-
-        /* li {
-            width: 80px;
-            font-size: 10px;
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            align-items: center;
-            position: relative;
-        } */
     }
 
     .menuIcon {
@@ -58,13 +58,6 @@ export const MenuList = styled.nav`
 `
 
 export const MenuLink = styled(Link)`
-    width: 80px;
-    font-size: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    align-items: center;
-    position: relative;
     text-decoration: none;
     color: inherit;
 `

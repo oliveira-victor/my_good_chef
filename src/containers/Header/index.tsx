@@ -1,9 +1,16 @@
+import { useDispatch } from 'react-redux'
+
+import { openFav } from '../../store/reducers/favoritesModal'
+
 import * as S from './styles'
 
 import logo from '../../assets/images/logo.webp'
 import cart from '../../assets/images/cart-icon.svg'
 
 const Header = () => {
+
+    const dispatch = useDispatch()
+
     return (
         <S.Header>
             <div className="headerContainer container">
@@ -15,7 +22,7 @@ const Header = () => {
                         <li>
                             Stores
                         </li>
-                        <li>
+                        <li onClick={() => dispatch(openFav(true))}>
                             Favorites
                         </li>
                         <li>
