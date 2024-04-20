@@ -20,9 +20,11 @@ const Header = () => {
                 </h1>
                 <S.Menu>
                     <ul>
-                        <StyledLink to={'/'}>
-                            Stores
-                        </StyledLink>
+                        <li>
+                            <StyledLink to={'/'}>
+                                Stores
+                            </StyledLink>
+                        </li>
                         <li onClick={() => dispatch(openFav(true))}>
                             Favorites
                         </li>
