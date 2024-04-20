@@ -9,21 +9,43 @@ const Shops = () => {
 
     const [shopsData, setShopsData] = useState<ShopCard[]>([])
 
+    const [filteredShops, setFilteredShops] = useState<ShopCard[]>([])
+
+    useEffect(() => {
+        setFilteredShops(shopsData)
+    }, [shopsData])
+
     useEffect(() => {
         fetch('https://api-fake-vfo.vercel.app/api/mygoodchef/shops')
             .then((res) => res.json())
             .then((res) => setShopsData(res))
     }, [])
 
-    if (!shopsData) {
+    const filterShops = (food: string) => {
+        const filter = shopsData.filter(shop => shop.meals.includes(food))
+        setFilteredShops(filter)
+    }
+
+    if (!filteredShops) {
         return <div className="loader container"><h2>Loading...</h2></div>
     }
 
     return (
-        <S.Shops className="container">
-            <S.ShopsList>
-                {shopsData.map((shop) => (
-                    <li key={shop.id}>
+        <>
+            <S.Nav>
+                <S.NavContainer className="container">
+                    <button onClick={() => setFilteredShops(shopsData)}>All</button>
+                    <button onClick={() => filterShops("Breakfast")}>Breakfast</button>
+                    <button onClick={() => filterShops("Lunch")}>Lunch</button>
+                    <button onClick={() => filterShops("Dinner")}>Dinner</button>
+                    <button onClick={() => filterShops("Desserts")}>Desserts</button>
+                    <button onClick={() => filterShops("Snacks")}>Snacks</button>
+                </S.NavContainer>
+            </S.Nav>
+            <S.Shops className="container">
+                <S.ShopsList>
+                    {filteredShops.map((shop) => (
+                    <li key={shop.id} className="fadeIn">
                         <StyledLink to={`/shop/${shop.id}`}>
                             <ShopCard
                                 id={shop.id}
@@ -38,8 +60,9 @@ const Shops = () => {
                         </StyledLink>
                     </li>
                 ))}
-            </S.ShopsList>
-        </S.Shops>
+                </S.ShopsList>
+            </S.Shops>
+        </>
     )
 }
 
