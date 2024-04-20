@@ -1,3 +1,4 @@
+import { SetStateAction } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { RootReducer } from '../../store'
@@ -9,7 +10,6 @@ import * as S from './styles'
 import close from '../../assets/images/close.svg'
 import heartEmpty from '../../assets/images/heart-empty.svg'
 import heartFull from '../../assets/images/heart-full.svg'
-import { SetStateAction } from 'react'
 
 const MenuModal: React.FC<{ data: MenuItem, setModalIsOpen: React.Dispatch<SetStateAction<boolean>> }> = ({ data, setModalIsOpen }) => {
 

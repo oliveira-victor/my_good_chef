@@ -34,8 +34,8 @@ const ShopMenu = ({ menu }: MenuInfo) => {
         <S.MenuContainer>
 
             {modalIsOpen && (
-                <MenuModal 
-                    data={modalData} 
+                <MenuModal
+                    data={modalData}
                     setModalIsOpen={setModalIsOpen}
                 />
             )}

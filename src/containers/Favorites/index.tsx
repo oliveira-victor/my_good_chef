@@ -40,10 +40,10 @@ const Favorites = () => {
     return (
         <>
             {modalIsOpen && (
-                <MenuModal 
-                data={modalData} 
-                setModalIsOpen={setModalIsOpen}
-            />
+                <MenuModal
+                    data={modalData}
+                    setModalIsOpen={setModalIsOpen}
+                />
             )}
 
             {favIsOpen &&
