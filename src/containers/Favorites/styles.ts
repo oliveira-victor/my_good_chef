@@ -37,6 +37,7 @@ export const Favorites = styled.div`
 `
 
 export const favItem = styled.li`
+    min-width: 90px;
     width: 140px;
     height: 140px;
     cursor: pointer;

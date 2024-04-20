@@ -1,12 +1,12 @@
 import { useDispatch } from 'react-redux'
 
 import { openFav } from '../../store/reducers/favoritesModal'
+import { StyledLink } from '../../styles'
 
 import * as S from './styles'
 
 import logo from '../../assets/images/logo.webp'
 import cart from '../../assets/images/cart-icon.svg'
-import { StyledLink } from '../../styles'
 
 const Header = () => {
 
