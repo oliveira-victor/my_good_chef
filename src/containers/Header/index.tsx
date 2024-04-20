@@ -6,6 +6,7 @@ import * as S from './styles'
 
 import logo from '../../assets/images/logo.webp'
 import cart from '../../assets/images/cart-icon.svg'
+import { StyledLink } from '../../styles'
 
 const Header = () => {
 
@@ -19,9 +20,9 @@ const Header = () => {
                 </h1>
                 <S.Menu>
                     <ul>
-                        <li>
+                        <StyledLink to={'/'}>
                             Stores
-                        </li>
+                        </StyledLink>
                         <li onClick={() => dispatch(openFav(true))}>
                             Favorites
                         </li>
