@@ -12,7 +12,7 @@ const favoritesSlice = createSlice({
     name: 'favorites',
     initialState,
     reducers: {
-        add: (state, action: PayloadAction<MenuItem>) => {
+        addFav: (state, action: PayloadAction<MenuItem>) => {
             const favorite = action.payload
 
             if(state.favoritesList.find((item) => item.id === favorite.id)) {
@@ -27,5 +27,5 @@ const favoritesSlice = createSlice({
     }
 })
 
-export const { add } = favoritesSlice.actions
+export const { addFav } = favoritesSlice.actions
 export default favoritesSlice.reducer

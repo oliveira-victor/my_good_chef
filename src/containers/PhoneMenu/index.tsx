@@ -12,6 +12,7 @@ import heart from '../../assets/images/heart-empty.svg'
 const PhoneMenu = () => {
 
     const favIsOpen = useSelector((state: RootReducer) => state.favModal.favIsOpen)
+    const cartItems = useSelector((state: RootReducer) => state.cart.cartItems)
 
     const dispatch = useDispatch()
 
@@ -33,7 +34,9 @@ const PhoneMenu = () => {
                         <S.MenuLink to={'/'} className='listItem'>
                             <img className='menuIcon' src={cart} alt="" />
                             <span>Cart</span>
-                            <div className="smallBubble"></div>
+                            {cartItems.length > 0 && (
+                                <div className="smallBubble"></div>
+                            )}
                         </S.MenuLink>
                     </li>
                 </ul>

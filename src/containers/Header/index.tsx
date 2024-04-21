@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { openFav } from '../../store/reducers/favoritesModal'
 import { StyledLink } from '../../styles'
@@ -7,10 +7,13 @@ import * as S from './styles'
 
 import logo from '../../assets/images/logo.webp'
 import cart from '../../assets/images/cart-icon.svg'
+import { RootReducer } from '../../store'
 
 const Header = () => {
 
     const dispatch = useDispatch()
+
+    const cartItems = useSelector((state: RootReducer) => state.cart.cartItems)
 
     return (
         <S.Header>
@@ -30,9 +33,11 @@ const Header = () => {
                         </li>
                         <li>
                             <img className='cart' src={cart} alt="Cart icon" />
-                            <div className="bubble">
-                                3
-                            </div>
+                            {cartItems.length > 0 && (
+                                <div className="bubble">
+                                    {cartItems.length > 99 ? '!' : cartItems.length}
+                                </div>
+                            )}
                         </li>
                     </ul>
                 </S.Menu>
