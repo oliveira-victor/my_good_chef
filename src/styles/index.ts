@@ -102,4 +102,14 @@ export const StyledLink = styled(Link)`
     color: inherit;
 `
 
+export const PageWrapper = styled.section`
+    background-color: ${colors.neutral};
+    max-width: 1440px;
+    width: 96%;
+    margin: 0 auto;
+    margin-top: 30px;
+    padding: 30px;
+    border-radius: 20px;
+`
+
 export default GlobalStyle
