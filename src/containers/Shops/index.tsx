@@ -35,16 +35,18 @@ const Shops = () => {
 
     return (
         <>
-            <S.Nav>
-                <S.NavContainer className="container">
-                    <button className={activeBtn === "All" ? "activeBtn" : ""} onClick={() => filterShops("All")}>All</button>
-                    <button className={activeBtn === "Breakfast" ? "activeBtn" : ""} onClick={() => filterShops("Breakfast")}>Breakfast</button>
-                    <button className={activeBtn === "Lunch" ? "activeBtn" : ""} onClick={() => filterShops("Lunch")}>Lunch</button>
-                    <button className={activeBtn === "Dinner" ? "activeBtn" : ""} onClick={() => filterShops("Dinner")}>Dinner</button>
-                    <button className={activeBtn === "Desserts" ? "activeBtn" : ""} onClick={() => filterShops("Desserts")}>Desserts</button>
-                    <button className={activeBtn === "Snacks" ? "activeBtn" : ""} onClick={() => filterShops("Snacks")}>Snacks</button>
-                </S.NavContainer>
-            </S.Nav>
+            {filteredShops.length > 0 && (
+                <S.Nav>
+                    <S.NavContainer className="container">
+                        <button className={activeBtn === "All" ? "activeBtn" : ""} onClick={() => filterShops("All")}>All</button>
+                        <button className={activeBtn === "Breakfast" ? "activeBtn" : ""} onClick={() => filterShops("Breakfast")}>Breakfast</button>
+                        <button className={activeBtn === "Lunch" ? "activeBtn" : ""} onClick={() => filterShops("Lunch")}>Lunch</button>
+                        <button className={activeBtn === "Dinner" ? "activeBtn" : ""} onClick={() => filterShops("Dinner")}>Dinner</button>
+                        <button className={activeBtn === "Desserts" ? "activeBtn" : ""} onClick={() => filterShops("Desserts")}>Desserts</button>
+                        <button className={activeBtn === "Snacks" ? "activeBtn" : ""} onClick={() => filterShops("Snacks")}>Snacks</button>
+                    </S.NavContainer>
+                </S.Nav>
+            )}
             <S.Shops className="container">
                 <S.ShopsList>
                     {filteredShops.map((shop) => (
