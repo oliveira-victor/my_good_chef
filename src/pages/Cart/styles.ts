@@ -54,6 +54,7 @@ export const CartItem = styled.li`
 
         .amount {
             background-color: rgba(255, 255, 255, 0.7);
+            min-width: 54px;
             padding: 10px 14px;
             font-size: 20px;
             font-family: "Rowdies", sans-serif;
@@ -101,7 +102,6 @@ export const TotalContainer = styled.div`
 
     .checkoutBtn {
         background-color: ${colors.star};
-        color: #fff;
         border: none;
         border-radius: 10px;
         font-size: 20px;
