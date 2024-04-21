@@ -90,3 +90,26 @@ export const BtnsContainer = styled.div`
         font-size: 20px;
     }
 `
+
+export const TotalContainer = styled.div`
+    text-align: right;
+
+    span {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .checkoutBtn {
+        background-color: ${colors.star};
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        font-size: 20px;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+
+    @media (max-width: ${screenSize.phone}) {
+        text-align: center;
+    }
+`
