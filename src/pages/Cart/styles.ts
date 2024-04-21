@@ -37,10 +37,14 @@ export const CartItem = styled.li`
 
     .itemTitle {
         font-size: 26px;
+
+        @media (max-width: ${screenSize.phone}) {
+            font-size: 20px;
+        }
     }
 
     .itemImg {
-        width: 140px;
+        min-width: 140px;
         height: 140px;
         background-size: cover;
         position: relative;
