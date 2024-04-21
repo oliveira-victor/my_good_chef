@@ -11,7 +11,7 @@ const Shops = () => {
 
     const [filteredShops, setFilteredShops] = useState<ShopCard[]>([])
 
-    const [activeBtn, setActiveBtn] = useState<string | ShopCard[]>("All")
+    const [activeBtn, setActiveBtn] = useState<string>("All")
 
     useEffect(() => {
         setFilteredShops(shopsData)
