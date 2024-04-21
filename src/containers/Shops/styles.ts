@@ -40,6 +40,14 @@ export const NavContainer = styled.div`
             background-color: ${colors.pillsHover};
         }
     }
+
+    .activeBtn {
+        background-color: ${colors.main};
+
+        &:hover {
+            background-color: ${colors.main};
+        }
+    }
 `
 
 export const Shops = styled.section`

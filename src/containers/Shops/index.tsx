@@ -11,6 +11,8 @@ const Shops = () => {
 
     const [filteredShops, setFilteredShops] = useState<ShopCard[]>([])
 
+    const [activeBtn, setActiveBtn] = useState<string | ShopCard[]>("All")
+
     useEffect(() => {
         setFilteredShops(shopsData)
     }, [shopsData])
@@ -23,7 +25,8 @@ const Shops = () => {
 
     const filterShops = (food: string) => {
         const filter = shopsData.filter(shop => shop.meals.includes(food))
-        setFilteredShops(filter)
+        food === "All" ? setFilteredShops(shopsData) : setFilteredShops(filter)
+        setActiveBtn(food)
     }
 
     if (!filteredShops) {
@@ -34,32 +37,32 @@ const Shops = () => {
         <>
             <S.Nav>
                 <S.NavContainer className="container">
-                    <button onClick={() => setFilteredShops(shopsData)}>All</button>
-                    <button onClick={() => filterShops("Breakfast")}>Breakfast</button>
-                    <button onClick={() => filterShops("Lunch")}>Lunch</button>
-                    <button onClick={() => filterShops("Dinner")}>Dinner</button>
-                    <button onClick={() => filterShops("Desserts")}>Desserts</button>
-                    <button onClick={() => filterShops("Snacks")}>Snacks</button>
+                    <button className={activeBtn === "All" ? "activeBtn" : ""} onClick={() => filterShops("All")}>All</button>
+                    <button className={activeBtn === "Breakfast" ? "activeBtn" : ""} onClick={() => filterShops("Breakfast")}>Breakfast</button>
+                    <button className={activeBtn === "Lunch" ? "activeBtn" : ""} onClick={() => filterShops("Lunch")}>Lunch</button>
+                    <button className={activeBtn === "Dinner" ? "activeBtn" : ""} onClick={() => filterShops("Dinner")}>Dinner</button>
+                    <button className={activeBtn === "Desserts" ? "activeBtn" : ""} onClick={() => filterShops("Desserts")}>Desserts</button>
+                    <button className={activeBtn === "Snacks" ? "activeBtn" : ""} onClick={() => filterShops("Snacks")}>Snacks</button>
                 </S.NavContainer>
             </S.Nav>
             <S.Shops className="container">
                 <S.ShopsList>
                     {filteredShops.map((shop) => (
-                    <li key={shop.id} className="fadeIn">
-                        <StyledLink to={`/shop/${shop.id}`}>
-                            <ShopCard
-                                id={shop.id}
-                                title={shop.title}
-                                image={shop.image}
-                                tag={shop.tag}
-                                vegan={shop.vegan}
-                                meals={shop.meals}
-                                description={shop.description}
-                                reviews={shop.reviews}
-                            />
-                        </StyledLink>
-                    </li>
-                ))}
+                        <li key={shop.id} className="fadeIn">
+                            <StyledLink to={`/shop/${shop.id}`}>
+                                <ShopCard
+                                    id={shop.id}
+                                    title={shop.title}
+                                    image={shop.image}
+                                    tag={shop.tag}
+                                    vegan={shop.vegan}
+                                    meals={shop.meals}
+                                    description={shop.description}
+                                    reviews={shop.reviews}
+                                />
+                            </StyledLink>
+                        </li>
+                    ))}
                 </S.ShopsList>
             </S.Shops>
         </>
