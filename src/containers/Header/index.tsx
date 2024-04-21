@@ -32,12 +32,14 @@ const Header = () => {
                             Favorites
                         </li>
                         <li>
-                            <img className='cart' src={cart} alt="Cart icon" />
-                            {cartItems.length > 0 && (
-                                <div className="bubble">
-                                    {cartItems.length > 99 ? '!' : cartItems.length}
-                                </div>
-                            )}
+                            <StyledLink to={'/cart'}>
+                                <img className='cart' src={cart} alt="Cart icon" />
+                                {cartItems.length > 0 && (
+                                    <div className="bubble">
+                                        {cartItems.length > 99 ? '!' : cartItems.length}
+                                    </div>
+                                )}
+                            </StyledLink>
                         </li>
                     </ul>
                 </S.Menu>

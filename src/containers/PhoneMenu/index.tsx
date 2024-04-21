@@ -22,17 +22,17 @@ const PhoneMenu = () => {
                 <ul>
                     <li>
                         <S.MenuLink to={'/'} className='listItem'>
-                            <img className='menuIcon' src={home} alt="" />
+                            <img className='menuIcon' src={home} alt="Home icon" />
                             <span>Stores</span>
                         </S.MenuLink>
                     </li>
                     <li className='listItem' onClick={() => dispatch(openFav(!favIsOpen))}>
-                        <img className='menuIcon heart' src={heart} alt="" />
+                        <img className='menuIcon heart' src={heart} alt="Favorites icon" />
                         <span>Favorites</span>
                     </li>
                     <li>
-                        <S.MenuLink to={'/'} className='listItem'>
-                            <img className='menuIcon' src={cart} alt="" />
+                        <S.MenuLink to={'/cart'} className='listItem'>
+                            <img className='menuIcon' src={cart} alt="Cart icon" />
                             <span>Cart</span>
                             {cartItems.length > 0 && (
                                 <div className="smallBubble"></div>
