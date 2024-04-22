@@ -42,10 +42,12 @@ export const NavContainer = styled.div`
     }
 
     .activeBtn {
-        background-color: ${colors.main};
+        background-color: ${colors.star};
+        color: #000;
 
         &:hover {
-            background-color: ${colors.main};
+            background-color: ${colors.star};
+            color: #000;
         }
     }
 `

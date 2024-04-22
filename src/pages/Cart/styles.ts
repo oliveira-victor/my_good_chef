@@ -110,10 +110,115 @@ export const TotalContainer = styled.div`
         border-radius: 10px;
         font-size: 20px;
         padding: 10px 20px;
+        margin-left: 20px;
         cursor: pointer;
+
+        @media (max-width: ${screenSize.phone}) {
+            margin-left: 0;
+            margin: 8px auto;
+        }
     }
 
     @media (max-width: ${screenSize.phone}) {
         text-align: center;
+    }
+`
+
+export const FormContainer = styled.form`
+    max-width: 600px;
+    width: 100%;
+    margin: 30px auto;
+
+    h3 {
+        text-align: center;
+        font-size: 24px;
+    }
+
+    label {
+        display: block;
+        margin-top: 30px;
+    }
+
+    input {
+        width: 100%;
+        height: 40px;
+        margin-top: 6px;
+        border: none;
+        border-bottom: 2px solid ${colors.star};
+        font-size: 20px;
+    }
+
+    .formDivision {
+        display: grid;
+        grid-template-columns: 25% auto;
+        gap: 30px;
+    }
+
+    .formDivisionTrio {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 10px;
+    }
+
+    @media (max-width: ${screenSize.phone}) {
+        label {
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        input {
+            font-size: 16px;
+            margin-top: 4px;
+        }
+    }
+`
+
+export const FinalScreen = styled.div`
+    max-width: 600px;
+    width: 100%;
+    margin: 30px auto;
+
+    img {
+        width: 100px;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 30px;
+
+        @media (max-width: ${screenSize.phone}) {
+            width: 60px;
+        }
+    }
+
+    h3 {
+        font-size: 30px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    span {
+        display: block;
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 20px;
+    }
+
+    p {
+        line-height: 1.6;
+    }
+`
+
+export const ProgressBar = styled.div`
+    margin: 60px auto 30px auto;
+    width: 80%;
+    height: 24px;
+    border-radius: 12px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+
+    .fill {
+        background: rgb(255,221,84);
+        background: linear-gradient(0deg, rgba(255,221,84,1) 0%, rgba(252,255,138,1) 100%);
+        height: 100%;
+        border-radius: 12px;
+        transition: all 2s ease;
     }
 `
