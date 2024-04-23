@@ -1,18 +1,24 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
 
 import { currencyFormat } from '../../utils/currency'
-import { addCart, removeCart } from '../../store/reducers/cart'
+import { addCart, clear, removeCart } from '../../store/reducers/cart'
 import { RootReducer } from '../../store'
+import { usePurchaseMutation } from '../../services/api'
 
 import { PageWrapper } from '../../styles'
 import * as S from './styles'
 
 import tick from '../../assets/images/tick.svg'
+import PaymentBtn from '../../components/PaymentBtn'
 
 const Cart = () => {
 
     const dispatch = useDispatch()
+
+    const [purchase, { isLoading, data, isSuccess }] = usePurchaseMutation()
 
     const cartItems = useSelector((state: RootReducer) => state.cart.cartItems)
 
@@ -54,124 +60,304 @@ const Cart = () => {
         }
     }
 
+    const goToPayment = () => {
+        if (!form.isValid || !form.dirty) {
+            
+        } else {
+            setCartPage(3)
+        }
+    }
+
+    const checkInputHasError = (fieldName: string) => {
+        const isTouched = fieldName in form.touched
+        const isInvalid = fieldName in form.errors
+        const hasError = isTouched && isInvalid
+
+        return hasError
+    }
+
+    const form = useFormik({
+        initialValues: {
+            fullName: '',
+            street: '',
+            number: '',
+            zip: '',
+            phone: '',
+            complement: '',
+            nameOnCard: '',
+            cardNumber: '',
+            expMonth: '',
+            expYear: '',
+            cvv: ''
+        },
+        validationSchema: Yup.object({
+            fullName: Yup.string().required(),
+            street: Yup.string().required(),
+            number: Yup.string().required(),
+            zip: Yup.string().required(),
+            phone: Yup.string().required(),
+            complement: Yup.string(),
+
+            nameOnCard: Yup.string().when((_values, schema) => cartPage === 3 ? schema.required() : schema),
+            cardNumber: Yup.number().when((_values, schema) => cartPage === 3 ? schema.min(16, '').required() : schema),
+            expMonth: Yup.number().when((_values, schema) => cartPage === 3 ? schema.min(2, '').required() : schema),
+            expYear: Yup.number().when((_values, schema) => cartPage === 3 ? schema.min(2, '').required() : schema),
+            cvv: Yup.number().when((_values, schema) => cartPage === 3 ? schema.min(3, '').required() : schema)
+        }),
+        onSubmit: (values) => {
+            purchase({
+                delivery: {
+                    receiver: values.fullName,
+                    address: {
+                        street: values.street,
+                        houseNumber: values.number,
+                        zipcode: Number(values.zip),
+                        complement: values.complement,
+                        phone: Number(values.phone)
+                    }
+                },
+                payment: {
+                    card: {
+                        nameOnCard: values.nameOnCard,
+                        cardNumber: values.cardNumber,
+                        cvv: Number(values.cvv),
+                        expires: {
+                            month: Number(values.expMonth),
+                            year: Number(values.expYear)
+                        }
+                    }
+                },
+                products: cartItems.map((item) => ({
+                    id: item.id,
+                    price: item.price
+                }))
+            })
+        }
+    })
+
+    useEffect(() => {
+        if (isSuccess) {
+            setCartPage(4)
+            dispatch(clear())
+        }
+    }, [isSuccess, dispatch])
+
     return (
         <PageWrapper>
             <S.CartTitle className='shopTitle'>
                 Cart
             </S.CartTitle>
-            {cartItems.length > 0 ? (
-                <>
-                    {cartPage === 1 && (
-                        <>
-                            <S.CartList>
 
-                                {reducedProducts.map((product, index) => (
-                                    <S.CartItem key={index}>
-                                        <div className="itemImg" style={{ backgroundImage: `url(${product.image})` }}>
-                                            <span className='amount'>x{cartItems.filter(item => item.id === product.id).length}</span>
+            <>
+                {cartPage === 1 && cartItems.length > 0 && (
+                    <>
+                        <S.CartList>
+
+                            {reducedProducts.map((product, index) => (
+                                <S.CartItem key={index}>
+                                    <div className="itemImg" style={{ backgroundImage: `url(${product.image})` }}>
+                                        <span className='amount'>x{cartItems.filter(item => item.id === product.id).length}</span>
+                                    </div>
+                                    <div className="itemContent">
+                                        <h3 className='itemTitle shopTitle'>{product.title}</h3>
+                                        <div className="priceContainer">
+                                            <span>Price: {currencyFormat.format(product.price)}</span>
+                                            <span>Total: {currencyFormat.format(handleTotal(product.id, product.price))}</span>
                                         </div>
-                                        <div className="itemContent">
-                                            <h3 className='itemTitle shopTitle'>{product.title}</h3>
-                                            <div className="priceContainer">
-                                                <span>Price: {currencyFormat.format(product.price)}</span>
-                                                <span>Total: {currencyFormat.format(handleTotal(product.id, product.price))}</span>
-                                            </div>
-                                            <S.BtnsContainer>
-                                                <button onClick={() => dispatch(removeCart(product.id))}>-</button>
-                                                <button onClick={() => dispatch(addCart(product))}>+</button>
-                                            </S.BtnsContainer>
-                                        </div>
-                                    </S.CartItem>
-                                ))}
+                                        <S.BtnsContainer>
+                                            <button type='button' onClick={() => dispatch(removeCart(product.id))}>-</button>
+                                            <button type='button' onClick={() => dispatch(addCart(product))}>+</button>
+                                        </S.BtnsContainer>
+                                    </div>
+                                </S.CartItem>
+                            ))}
 
-                            </S.CartList>
-                            <S.TotalContainer>
-                                <span>{cartItems.length} {cartItems.length > 1 ? 'items' : 'item'} - Total: {getFinalPrice()}</span>
-                                <button className='checkoutBtn' onClick={() => setCartPage(2)}>Go to checkout</button>
-                            </S.TotalContainer>
-                        </>
-                    )}
+                        </S.CartList>
+                        <S.TotalContainer>
+                            <span>{cartItems.length} {cartItems.length > 1 ? 'items' : 'item'} - Total: {getFinalPrice()}</span>
+                            <button type='button' className='checkoutBtn' onClick={() => setCartPage(2)}>Go to checkout</button>
+                        </S.TotalContainer>
+                    </>
+                )}
 
+                <form onSubmit={form.handleSubmit}>
                     {cartPage === 2 && (
                         <>
                             <S.FormContainer>
                                 <h3>Delivery Address</h3>
-                                <label htmlFor="name">Full name</label>
-                                <input type="text" id='name' name='name' />
-                                <label htmlFor="street">Street</label>
-                                <input type="text" id='street' name='street' />
+                                <label htmlFor="fullName">Full name*</label>
+                                <input
+                                    type="text"
+                                    id='fullName'
+                                    name='fullName'
+                                    value={form.values.fullName}
+                                    onChange={form.handleChange}
+                                    onBlur={form.handleBlur}
+                                    className={checkInputHasError('fullName') ? 'error' : ''}
+                                />
+                                <label htmlFor="street">Street*</label>
+                                <input
+                                    type="text"
+                                    id='street'
+                                    name='street'
+                                    value={form.values.street}
+                                    onChange={form.handleChange}
+                                    onBlur={form.handleBlur}
+                                    className={checkInputHasError('street') ? 'error' : ''}
+                                />
                                 <div className='formDivision'>
                                     <div>
-                                        <label htmlFor="number">Number</label>
-                                        <input type="text" id='number' name='number' />
+                                        <label htmlFor="number">Number*</label>
+                                        <input
+                                            type="text"
+                                            id='number'
+                                            name='number'
+                                            value={form.values.number}
+                                            onChange={form.handleChange}
+                                            onBlur={form.handleBlur}
+                                            className={checkInputHasError('number') ? 'error' : ''}
+                                        />
                                     </div>
                                     <div>
-                                        <label htmlFor="zip">Zip code</label>
-                                        <input type="number" id='zip' name='zip' />
+                                        <label htmlFor="zip">Zip code*</label>
+                                        <input
+                                            type="number"
+                                            id='zip'
+                                            name='zip'
+                                            value={form.values.zip}
+                                            onChange={form.handleChange}
+                                            onBlur={form.handleBlur}
+                                            className={checkInputHasError('zip') ? 'error' : ''}
+                                        />
                                     </div>
                                 </div>
-                                <label htmlFor="phone">Contact number</label>
-                                <input type="phone" id='phone' name='phone' />
+                                <label htmlFor="phone">Contact number*</label>
+                                <input
+                                    type="phone"
+                                    id='phone'
+                                    name='phone'
+                                    value={form.values.phone}
+                                    onChange={form.handleChange}
+                                    onBlur={form.handleBlur}
+                                    className={checkInputHasError('phone') ? 'error' : ''}
+                                />
                                 <label htmlFor="complement">Complement (optional)</label>
-                                <input type="text" id='complement' name='complement' />
+                                <input
+                                    type="text"
+                                    id='complement'
+                                    name='complement'
+                                    value={form.values.complement}
+                                    onChange={form.handleChange}
+                                    onBlur={form.handleBlur}
+                                    className={checkInputHasError('complement') ? 'error' : ''}
+                                />
                             </S.FormContainer>
 
                             <S.TotalContainer>
                                 <span>{cartItems.length} {cartItems.length > 1 ? 'items' : 'item'} - Total: {getFinalPrice()}</span>
-                                <button className='checkoutBtn' onClick={() => setCartPage(1)}>Back to products list</button>
-                                <button className='checkoutBtn' onClick={() => setCartPage(3)}>Go to payment</button>
+                                <button type='button' className='checkoutBtn' onClick={() => setCartPage(1)}>Back to products list</button>
+                                <button type='button' className='checkoutBtn' onClick={goToPayment}>Go to payment</button>
                             </S.TotalContainer>
                         </>
                     )}
 
-                    {cartPage === 3 && (
+                    {cartPage === 3 && cartItems.length > 0 && (
                         <>
                             <S.FormContainer>
                                 <h3>Payment</h3>
-                                <label htmlFor="nameOnCard">Name on card</label>
-                                <input type="text" id='nameOnCard' name='nameOnCard' />
-                                <label htmlFor="cardNumber">Card number</label>
-                                <input type="number" id='cardNumber' name='cardNumber' />
+                                <label htmlFor="nameOnCard">Name on card*</label>
+                                <input
+                                    type="text"
+                                    id='nameOnCard'
+                                    name='nameOnCard'
+                                    value={form.values.nameOnCard}
+                                    onChange={form.handleChange}
+                                    onBlur={form.handleBlur}
+                                    className={checkInputHasError('nameOnCard') ? 'error' : ''}
+                                />
+                                <label htmlFor="cardNumber">Card number*</label>
+                                <input
+                                    type="number"
+                                    id='cardNumber'
+                                    name='cardNumber'
+                                    value={form.values.cardNumber}
+                                    onChange={form.handleChange}
+                                    onBlur={form.handleBlur}
+                                    className={checkInputHasError('cardNumber') ? 'error' : ''}
+                                />
                                 <div className='formDivisionTrio'>
                                     <div>
-                                        <label htmlFor="expMonth">Exp. month</label>
-                                        <input type="number" id='expMonth' name='expMonth' />
+                                        <label htmlFor="expMonth">Exp. month*</label>
+                                        <input
+                                            type="number"
+                                            id='expMonth'
+                                            name='expMonth'
+                                            value={form.values.expMonth}
+                                            onChange={form.handleChange}
+                                            onBlur={form.handleBlur}
+                                            className={checkInputHasError('expMonth') ? 'error' : ''}
+                                        />
                                     </div>
                                     <div>
-                                        <label htmlFor="expYear">Exp. year</label>
-                                        <input type="number" id='expYear' name='expYear' />
+                                        <label htmlFor="expYear">Exp. year*</label>
+                                        <input
+                                            type="number"
+                                            id='expYear'
+                                            name='expYear'
+                                            value={form.values.expYear}
+                                            onChange={form.handleChange}
+                                            onBlur={form.handleBlur}
+                                            className={checkInputHasError('expYear') ? 'error' : ''}
+                                        />
                                     </div>
                                     <div>
-                                        <label htmlFor="cvv">CVV</label>
-                                        <input type="number" id='cvv' name='cvv' />
+                                        <label htmlFor="cvv">CVV*</label>
+                                        <input
+                                            type="number"
+                                            id='cvv'
+                                            name='cvv'
+                                            value={form.values.cvv}
+                                            onChange={form.handleChange}
+                                            onBlur={form.handleBlur}
+                                            className={checkInputHasError('cvv') ? 'error' : ''}
+                                        />
                                     </div>
                                 </div>
                             </S.FormContainer>
 
                             <S.TotalContainer>
                                 <span>{cartItems.length} {cartItems.length > 1 ? 'items' : 'item'} - Total: {getFinalPrice()}</span>
-                                <button className='checkoutBtn' onClick={() => setCartPage(2)}>Back to address</button>
-                                <button className='checkoutBtn' onClick={() => setCartPage(4)}>Pay {getFinalPrice()}</button>
+                                <button type='button' className='checkoutBtn' onClick={() => setCartPage(2)}>Back to address</button>
+                                <PaymentBtn 
+                                    type='submit'
+                                    onClick={form.handleSubmit}
+                                    disabled={isLoading}
+                                    content={isLoading ? 'Processing...' : `Pay ${getFinalPrice()}`}
+                                />
                             </S.TotalContainer>
                         </>
                     )}
+                </form>
 
-                    {cartPage === 4 && (
-                        <S.FinalScreen>
-                            <img src={tick} alt="Tick icon" />
-                            <h3>Your order has been placed!</h3>
-                            <span>Order ID: 348723647832</span>
-                            <p>
-                                Thank you for ordering with us! You'll be receiving your food in no time, and you won't be charged any extra fees. Remember to wash your hands before touching your food and enjoy!
-                            </p>
-                        </S.FinalScreen>
-                    )}
+                {cartPage === 4 && (
+                    <S.FinalScreen>
+                        <img src={tick} alt="Tick icon" />
+                        <h3>Your order has been placed!</h3>
+                        <span>Order ID: {data?.orderId}</span>
+                        <p>
+                            Thank you for ordering with us! You'll be receiving your food in no time, and you won't be charged any extra fees. Remember to wash your hands before touching your food and bon appétit!
+                        </p>
+                    </S.FinalScreen>
+                )}
 
+                {cartItems.length > 0 || cartPage === 4 ? (
                     <S.ProgressBar>
                         <div className="fill" style={{ width: getPercentage() }}></div>
                     </S.ProgressBar>
-                </>
-            ) : (
+                ) : ('')}
+            </>
+
+            {cartPage === 1 && cartItems.length === 0 && (
                 <S.EmptyCart>
                     Your shopping cart is empty.
                 </S.EmptyCart>

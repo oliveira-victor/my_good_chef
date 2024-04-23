@@ -83,6 +83,21 @@ const GlobalStyle = createGlobalStyle`
         }
     }
 
+    .checkoutBtn {
+        background-color: ${colors.star};
+        border: none;
+        border-radius: 10px;
+        font-size: 20px;
+        padding: 10px 20px;
+        margin-left: 20px;
+        cursor: pointer;
+
+        @media (max-width: ${screenSize.phone}) {
+            margin-left: 0;
+            margin: 8px auto;
+        }
+    }
+
     .fadeIn { animation: fadeIn .3s; }
 
     @keyframes fadeIn {

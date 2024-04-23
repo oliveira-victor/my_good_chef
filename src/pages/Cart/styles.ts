@@ -104,27 +104,14 @@ export const TotalContainer = styled.div`
         margin-bottom: 10px;
     }
 
-    .checkoutBtn {
-        background-color: ${colors.star};
-        border: none;
-        border-radius: 10px;
-        font-size: 20px;
-        padding: 10px 20px;
-        margin-left: 20px;
-        cursor: pointer;
-
-        @media (max-width: ${screenSize.phone}) {
-            margin-left: 0;
-            margin: 8px auto;
-        }
-    }
+    
 
     @media (max-width: ${screenSize.phone}) {
         text-align: center;
     }
 `
 
-export const FormContainer = styled.form`
+export const FormContainer = styled.div`
     max-width: 600px;
     width: 100%;
     margin: 30px auto;
@@ -146,6 +133,10 @@ export const FormContainer = styled.form`
         border: none;
         border-bottom: 2px solid ${colors.star};
         font-size: 20px;
+
+        &.error {
+            border: 2px solid red;
+        }
     }
 
     .formDivision {
