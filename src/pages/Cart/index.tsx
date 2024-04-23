@@ -48,6 +48,13 @@ const Cart = () => {
         return currencyFormat.format(priceSum)
     }
 
+    const resetCart = () => {
+        if (cartPage > 1) {
+            setCartPage(1)
+        }
+        return 'Your shopping cart is empty.'
+    }
+
     const getPercentage = () => {
         if (cartPage === 1) {
             return '25%'
@@ -181,7 +188,7 @@ const Cart = () => {
                 )}
 
                 <form onSubmit={form.handleSubmit}>
-                    {cartPage === 2 && (
+                    {cartPage === 2 && cartItems.length > 0 && (
                         <>
                             <S.FormContainer>
                                 <h3>Delivery Address</h3>
@@ -357,9 +364,9 @@ const Cart = () => {
                 ) : ('')}
             </>
 
-            {cartPage === 1 && cartItems.length === 0 && (
+            {cartItems.length === 0 && cartPage != 4 && (
                 <S.EmptyCart>
-                    Your shopping cart is empty.
+                    {resetCart()}
                 </S.EmptyCart>
             )}
         </PageWrapper>

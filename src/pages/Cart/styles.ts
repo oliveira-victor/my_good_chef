@@ -104,8 +104,6 @@ export const TotalContainer = styled.div`
         margin-bottom: 10px;
     }
 
-    
-
     @media (max-width: ${screenSize.phone}) {
         text-align: center;
     }
