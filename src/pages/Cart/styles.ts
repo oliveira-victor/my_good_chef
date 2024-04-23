@@ -100,8 +100,14 @@ export const TotalContainer = styled.div`
     text-align: right;
 
     span {
-        display: block;
         margin-bottom: 10px;
+        display: block;
+    }
+
+    .cartBtnsContainer {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 10px;
     }
 
     @media (max-width: ${screenSize.phone}) {

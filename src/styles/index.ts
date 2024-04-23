@@ -98,6 +98,15 @@ const GlobalStyle = createGlobalStyle`
         }
     }
 
+    .returnBtn {
+        background-color: transparent;
+        color: #b57622;
+        font-size: 20px;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+    }
+
     .fadeIn { animation: fadeIn .3s; }
 
     @keyframes fadeIn {

@@ -69,7 +69,7 @@ const Cart = () => {
 
     const goToPayment = () => {
         if (!form.isValid || !form.dirty) {
-            
+            alert('Please, fill in the required fields.')
         } else {
             setCartPage(3)
         }
@@ -262,8 +262,10 @@ const Cart = () => {
 
                             <S.TotalContainer>
                                 <span>{cartItems.length} {cartItems.length > 1 ? 'items' : 'item'} - Total: {getFinalPrice()}</span>
-                                <button type='button' className='checkoutBtn' onClick={() => setCartPage(1)}>Back to products list</button>
-                                <button type='button' className='checkoutBtn' onClick={goToPayment}>Go to payment</button>
+                                <div className='cartBtnsContainer'>
+                                    <button type='button' className='returnBtn' onClick={() => setCartPage(1)}>Back to products list</button>
+                                    <button type='button' className='checkoutBtn' onClick={goToPayment}>Go to payment</button>
+                                </div>
                             </S.TotalContainer>
                         </>
                     )}
@@ -334,13 +336,15 @@ const Cart = () => {
 
                             <S.TotalContainer>
                                 <span>{cartItems.length} {cartItems.length > 1 ? 'items' : 'item'} - Total: {getFinalPrice()}</span>
-                                <button type='button' className='checkoutBtn' onClick={() => setCartPage(2)}>Back to address</button>
-                                <PaymentBtn 
-                                    type='submit'
-                                    onClick={form.handleSubmit}
-                                    disabled={isLoading}
-                                    content={isLoading ? 'Processing...' : `Pay ${getFinalPrice()}`}
-                                />
+                                <div className="cartBtnsContainer">
+                                    <button type='button' className='returnBtn' onClick={() => setCartPage(2)}>Back to address</button>
+                                    <PaymentBtn
+                                        type='submit'
+                                        onClick={form.handleSubmit}
+                                        disabled={isLoading}
+                                        content={isLoading ? 'Processing...' : `Pay ${getFinalPrice()}`}
+                                    />
+                                </div>
                             </S.TotalContainer>
                         </>
                     )}
