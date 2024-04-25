@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
+import { PulseLoader } from "react-spinners"
 
 import ShopHeader from "../../containers/ShopHeader"
 import ShopMenu from "../../containers/ShopMenu"
 
 import * as S from './styles'
+import { colors } from "../../styles/colors"
 
 const ShopPage = () => {
 
@@ -19,7 +21,7 @@ const ShopPage = () => {
     }, [id])
 
     if (!shop) {
-        return <div className="loader container"><h2>Loading...</h2></div>
+        return <div className="loader container"><PulseLoader color={colors.secondary} /></div>
     }
 
     return (

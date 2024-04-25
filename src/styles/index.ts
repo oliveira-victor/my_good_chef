@@ -27,6 +27,7 @@ const GlobalStyle = createGlobalStyle`
 
     .loader {
         padding: 50px 0;
+        text-align: center;
     }
 
     .shopTitle {
@@ -100,7 +101,7 @@ const GlobalStyle = createGlobalStyle`
 
     .returnBtn {
         background-color: transparent;
-        color: #b57622;
+        color: ${colors.secondary};
         font-size: 20px;
         padding: 10px 20px;
         border: none;

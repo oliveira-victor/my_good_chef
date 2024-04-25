@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react"
+import { PulseLoader } from "react-spinners"
 
 import ShopCard from "../../components/ShopCard"
 
 import * as S from './styles'
 import { StyledLink } from "../../styles"
+import { colors } from "../../styles/colors"
 
 const Shops = () => {
 
@@ -29,8 +31,8 @@ const Shops = () => {
         setActiveBtn(food)
     }
 
-    if (!filteredShops) {
-        return <div className="loader container"><h2>Loading...</h2></div>
+    if (shopsData.length === 0) {
+        return <div className="loader container"><PulseLoader color={colors.secondary} /></div>
     }
 
     return (
