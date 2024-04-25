@@ -18,9 +18,11 @@ const Header = () => {
     return (
         <S.Header>
             <div className="headerContainer container">
-                <h1>
-                    <img className='logo' src={logo} alt="My Good Chef" />
-                </h1>
+                <StyledLink to={'/'}>
+                    <h1>
+                        <img className='logo' src={logo} alt="My Good Chef" />
+                    </h1>
+                </StyledLink>
                 <S.Menu>
                     <ul>
                         <li>
