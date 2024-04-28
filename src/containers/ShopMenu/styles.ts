@@ -38,6 +38,6 @@ export const MenuList = styled.ul`
     gap: 30px;
 
     @media (max-width: ${screenSize.phone}) {
-        gap:10px
+        gap: 10px 0;
     }
 `
